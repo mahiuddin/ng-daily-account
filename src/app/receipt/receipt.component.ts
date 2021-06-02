@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Receipt } from '../@models/receipt';
 import { ReceiptService } from '../@services/receipt.service';
 
 @Component({
@@ -15,20 +16,36 @@ export class ReceiptComponent implements OnInit {
   constructor(private receiptService: ReceiptService) { }
 
   ngOnInit(): void {
+    this.receiptService.getAllReceipt().subscribe((data:any)=>{
+      this.receipts = data.map((e:any)=>{
+        return {
+          id: e.payload.doc.id,
+          ...e.payload.doc.data(),
+        } as Receipt[]
+      })
+    })
   }
 
   saveReceipt(){
-    // this.receiptService.addReceipt(this.rece)
+    if(this.receipt.id){
+      this.receiptService.updateReceipt(this.receipt);
+    }else{
+      this.receiptService.createReceipt(this.receipt);
+    }    
   }
 
-}
+  updateReceipt(receipt: Receipt){
+    this.receipt = receipt; 
+  }
 
-export interface Receipt{
-  id:number;
-  receiptDate : string;
-  particular: string;
-  entity: string;
-  method: string;
-  amount: number;
-  description: string;
+  resetForm(){
+    this.receipt = {} as Receipt; 
+  }
+
+  deleteReceipt(receipt: Receipt){
+    this.receiptService.deleteReceipt(receipt.id).then((res)=>{
+      alert("Receipt Deleted Successfully");
+      this.receipt = {} as Receipt;
+    });
+  }
 }

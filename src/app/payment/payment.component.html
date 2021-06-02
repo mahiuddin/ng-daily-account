@@ -1,16 +1,16 @@
 <div class="container mt-4">
     <div class="mt-3 mb-3 text-center">
-        <h1>Receipt Entry Form</h1>
+        <h1>Payment Entry Form</h1>
     </div>
 </div>
 <div class="container border mt-3 bg-light">
     <div class="mb-3">
-        <label  class="form-label">Receipt Date</label>
-        <input type="text" [(ngModel)]="receipt.date" class="form-control" placeholder="Receipt Date">
+        <label  class="form-label">Payment Date</label>
+        <input type="text" [(ngModel)]="payment.date" class="form-control" placeholder="Payment Date">
     </div>
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Particular</label>
-        <input type="text" [(ngModel)]="receipt.particular" class="form-control" placeholder="Particular">
+        <input type="text" [(ngModel)]="payment.particular" class="form-control" placeholder="Particular">
         <select class="form-select" aria-label="Default select example">
             <option selected>Open this select menu</option>
             <option value="1">Sell</option>
@@ -24,7 +24,7 @@
     </div>
     <div class="mb-3">
         <label for="exampleFormControlInput1" class="form-label">Branch Name</label>
-        <input type="text" [(ngModel)]="receipt.entityname" class="form-control" placeholder="Branch Name / Entity Name">
+        <input type="text" [(ngModel)]="payment.entityname" class="form-control" placeholder="Branch Name / Entity Name">
         <select class="form-select" aria-label="Default select example">
             <option selected>Open this select menu</option>
             <option value="1">Bangla Food Kinshicho</option>
@@ -34,8 +34,8 @@
           </select>
     </div>
     <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Receipt Method</label>
-        <input type="text" [(ngModel)]="receipt.method" class="form-control" placeholder="Receipt Method">
+        <label for="exampleFormControlInput1" class="form-label">Payment Method</label>
+        <input type="text" [(ngModel)]="payment.method" class="form-control" placeholder="Payment Method">
         <select class="form-select" aria-label="Default select example">
             <option selected>Open this select menu</option>
             <option value="1">Bank</option>
@@ -46,24 +46,24 @@
           </select>
     </div>
     <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">Receipt Amount</label>
-        <input type="number" [(ngModel)]="receipt.amount" class="form-control" placeholder="Receipt Amount">
+        <label for="exampleFormControlInput1" class="form-label">Payment Amount</label>
+        <input type="number" [(ngModel)]="payment.amount" class="form-control" placeholder="Payment Amount">
     </div>
     <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-        <textarea class="form-control" [(ngModel)]="receipt.description" rows="3"></textarea>
+        <textarea class="form-control" [(ngModel)]="payment.description" rows="3"></textarea>
     </div>
         
 </div>
 <div class="mt-3 container text-center">
     <div class="mb-3 text-center">
-        <button type="button" (click)="saveReceipt()" class="btn btn-success">Save</button>
+        <button type="button" (click)="savePayment()" class="btn btn-success">Save</button>
         <span>&nbsp;</span><button type="button" (click)="resetForm()" class="ml-2 btn btn-warning">Reset</button>
     </div>    
 </div>
 <div class="mt-3 container text-center">
     <div class="mb-3 text-center">
-        <h1>Receipt List</h1>
+        <h1>Payment List</h1>
     </div>    
 </div>
 
@@ -79,16 +79,16 @@
                 <th>Description</th>
                 <th>Action</th>
             </tr> 
-        <tr *ngFor="let receipt of receipts">
-            <td>{{ receipt.date  }}</td>
-            <td>{{ receipt.particular }}</td>
-            <td>{{ receipt.entityname }}</td>
-            <td>{{ receipt.method }}</td>
-            <td>{{ receipt.amount }}</td>
-            <td>{{ receipt.description }}</td>
+        <tr *ngFor="let payment of payments">
+            <td>{{ payment.date  }}</td>
+            <td>{{ payment.particular }}</td>
+            <td>{{ payment.entityname }}</td>
+            <td>{{ payment.method }}</td>
+            <td>{{ payment.amount }}</td>
+            <td>{{ payment.description }}</td>
             <td>
-                <button (click)="updateReceipt(receipt)">Edit</button>
-                <button (click)="deleteReceipt(receipt)">Delete</button>
+                <button (click)="updatePayment(payment)">Edit</button>
+                <button (click)="deletePayment(payment)">Delete</button>
             </td>
         </tr>
     </tbody> 
