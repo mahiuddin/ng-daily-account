@@ -48,5 +48,4 @@ export class PaymentComponent implements OnInit {
       this.payment = {} as Payment;
     });
   }
-
 }
