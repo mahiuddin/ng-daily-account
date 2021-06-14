@@ -5,6 +5,7 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { User } from '../@models/user';
 import { StorageService } from './storage.service';
 
 @Injectable({
@@ -28,15 +29,11 @@ export class AuthService {
     });
   }
 
-  SignUp(name: string, email: string, password: string, photo: string) {
+  SignUp(name: string, email: string, password: string) {
     return this.afAuth.createUserWithEmailAndPassword(email, password).then(
       (result: any) => {
-        // result.user.displayName = name;
-        // this.SetUserDate(result.user);
-
         const user = { ...result.user };
         user.displayName = name;
-        user.photoURL = photo;
         this.SetUserDate(user);
       },
       (error) => {
@@ -83,11 +80,4 @@ export class AuthService {
     const user = this.storage.get('user');
     return user !== null && user.uid ? true : false;
   }
-}
-
-export interface User {
-  uid: string;
-  email: string;
-  displayName: string;
-  photoURL: string;
 }

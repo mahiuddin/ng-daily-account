@@ -1,1 +1,33 @@
-<p>signup works!</p>
+
+<div class="container text-center mt-3 border">
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <div class="h3 mt-3">
+        <label for="title">Sign Up</label>
+      </div>
+      <div>
+        <label for="name">Full Name</label>
+      </div>
+      <div>
+        <input type="text" formControlName="name">
+      </div>
+      <div>
+        <label for="email">Username (Email)</label>
+      </div>
+      <div>
+        <input type="email" formControlName="email">
+        <span class="error" *ngIf="form.get('email').touched && form.get('email').hasError('required')">Email is required</span>
+      </div>
+      <div>
+        <label for="password">Password</label>
+      </div>
+      <div>  
+        <input type="password" formControlName="password">
+        <span class="error" *ngIf="form.get('password').touched && form.get('password').hasError('required')">Password is required</span>
+      </div>
+      <div class="mt-2">  
+        <button class="btn btn-primary">Sign Up</button>
+      </div>    
+    </form>
+    <br>
+    <a [routerLink]="['/']" routerLinkActive="router-link-active">Already have an account?</a>
+  </div>

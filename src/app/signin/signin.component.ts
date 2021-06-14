@@ -17,7 +17,6 @@ export class SigninComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    debugger;
     this.authService.SignOut().then((res) => {
       console.log(res);
     });
@@ -32,7 +31,7 @@ export class SigninComponent implements OnInit {
       const user = this.form.value;
       this.authService.SignIn(user.email, user.password).then((res) => {
         setTimeout(() => {
-          this.router.navigate(['/products']);
+          this.router.navigate(['/dashboard']);
         }, 100);
       });
     } else {
